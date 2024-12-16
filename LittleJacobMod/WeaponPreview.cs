@@ -135,13 +135,13 @@ internal class WeaponPreview : Script
 
     private void Menu_CamoColorChanged(object sender, CamoColorEventArgs e)
     {
-        Function.Call(Hash._SET_WEAPON_OBJECT_LIVERY_COLOR, _weaponHandle.Handle, e.Camo, e.ColorIndex);
+        Function.Call(Hash.SET_WEAPON_OBJECT_COMPONENT_TINT_INDEX, _weaponHandle.Handle, e.Camo, e.ColorIndex);
 
         var slide = TintsAndCamos.ReturnSlide(e.Camo);
 
         if (slide != (uint)WeaponComponentHash.Invalid)
         {
-            Function.Call(Hash._SET_WEAPON_OBJECT_LIVERY_COLOR, _weaponHandle.Handle, slide, e.ColorIndex);
+            Function.Call(Hash.SET_WEAPON_OBJECT_COMPONENT_TINT_INDEX, _weaponHandle.Handle, slide, e.ColorIndex);
         }
     }
 
@@ -175,10 +175,10 @@ internal class WeaponPreview : Script
                 if (slide != (uint)WeaponComponentHash.Invalid)
                 {
                     GiveWeaponComponentToObject(slide, true);
-                    Function.Call(Hash._SET_WEAPON_OBJECT_LIVERY_COLOR, _weaponHandle.Handle, slide, storedWeapon.GetCamoColor());
+                    Function.Call(Hash.SET_WEAPON_OBJECT_COMPONENT_TINT_INDEX, _weaponHandle.Handle, slide, storedWeapon.GetCamoColor());
                 }
 
-                Function.Call(Hash._SET_WEAPON_OBJECT_LIVERY_COLOR, _weaponHandle.Handle, storedWeapon.Camo.Hash, storedWeapon.GetCamoColor());
+                Function.Call(Hash.SET_WEAPON_OBJECT_COMPONENT_TINT_INDEX, _weaponHandle.Handle, storedWeapon.Camo.Hash, storedWeapon.GetCamoColor());
             }
         }
 

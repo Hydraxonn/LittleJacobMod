@@ -210,11 +210,11 @@ namespace LittleJacobMod.Saving
 
                     if (weapon.CamoColor != -1)
                     {
-                        Function.Call(Hash._SET_PED_WEAPON_LIVERY_COLOR, Main.PPID, weapon.WeaponHash, weapon.Camo.Hash, weapon.CamoColor);
+                        Function.Call(Hash.SET_WEAPON_OBJECT_COMPONENT_TINT_INDEX, Main.PPID, weapon.WeaponHash, weapon.Camo.Hash, weapon.CamoColor);
 
                         if (slide != (uint)WeaponComponentHash.Invalid)
                         {
-                            Function.Call(Hash._SET_PED_WEAPON_LIVERY_COLOR, Main.PPID, weapon.WeaponHash, slide, weapon.CamoColor);
+                            Function.Call(Hash.SET_WEAPON_OBJECT_COMPONENT_TINT_INDEX, Main.PPID, weapon.WeaponHash, slide, weapon.CamoColor);
                         }
                     }
                 }
@@ -223,7 +223,7 @@ namespace LittleJacobMod.Saving
 
                 if (loadedAmmoTypes.Contains(ammoType)) continue;
 
-                Function.Call(Hash._ADD_AMMO_TO_PED_BY_TYPE, Main.PPID, ammoType, weapon.Ammo);
+                Function.Call(Hash.ADD_PED_AMMO_BY_TYPE, Main.PPID, ammoType, weapon.Ammo);
                 loadedAmmoTypes.Add(ammoType);
             }
 

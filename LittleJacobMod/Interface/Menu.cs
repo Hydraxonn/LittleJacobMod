@@ -49,7 +49,7 @@ public class Menu
             Pool.Add(groupMenu);
             groupMenu.SelectedIndexChanged += (_, args) =>
             {
-                var groupedWeapons = weapons.FindAll(it => it.Group == groupMenu.Title.Text);
+                var groupedWeapons = weapons.FindAll(it => it.Group == groupMenu.BannerText.Text);
                 var selectedWeapon = groupedWeapons[args.Index];
                 SpawnWeaponObject?.Invoke(this, selectedWeapon.Hash);
                 groupMenu.Items[args.Index].Description = LoadoutSaving.IsWeaponInStore(selectedWeapon.Hash) ? 
@@ -203,7 +203,7 @@ public class Menu
                     category.SelectedIndexChanged += (_, args) =>
                     {
                         var groupedAttachments = weapon.Attachments.FindAll(
-                            it => it.Group == category.Title.Text);
+                            it => it.Group == category.BannerText.Text);
                         var selectedAttachment = groupedAttachments[args.Index];
                         ComponentSelected?.Invoke(this,
                             new ComponentPreviewEventArgs(weapon.Hash, selectedAttachment.Hash,
@@ -607,7 +607,7 @@ public class Menu
 
             Game.IsNightVisionActive = false;
             Game.IsThermalVisionActive = false;
-            GTA.UI.Notification.Show($"~g~{menu.Title.Text} {(purchased ? "Purchased" : "Equipped")}", true); 
+            GTA.UI.Notification.Show($"~g~{menu.BannerText.Text} {(purchased ? "Purchased" : "Equipped")}", true); 
         };
 
         menu.Closed += (_, _) =>
@@ -689,7 +689,7 @@ public class Menu
 
         Function.Call(Hash.PLAY_SOUND_FRONTEND, -1, "WEAPON_AMMO_PURCHASE", "HUD_AMMO_SHOP_SOUNDSET", true);
         Game.Player.Money -= ammoPrice;
-        Function.Call(Hash._ADD_AMMO_TO_PED_BY_TYPE, Main.PPID, ammoType, ammoToPurchase);
+        Function.Call(Hash.ADD_PED_AMMO_BY_TYPE, Main.PPID, ammoType, ammoToPurchase);
         LoadoutSaving.SetAmmo(weapon, Function.Call<int>(Hash.GET_AMMO_IN_PED_WEAPON, Main.PPID, weapon));
     }
 
@@ -774,12 +774,12 @@ public class Menu
         }
             
         Game.Player.Money -= price;
-        Function.Call(Hash._SET_PED_WEAPON_LIVERY_COLOR, Main.PPID, weapon, camo, index);
+        Function.Call(Hash.SET_WEAPON_OBJECT_COMPONENT_TINT_INDEX, Main.PPID, weapon, camo, index);
         var slide = TintsAndCamos.ReturnSlide(camo);
             
         if (slide != (uint)WeaponComponentHash.Invalid)
         {
-            Function.Call(Hash._SET_PED_WEAPON_LIVERY_COLOR, Main.PPID, weapon, slide, index);
+            Function.Call(Hash.SET_WEAPON_OBJECT_COMPONENT_TINT_INDEX, Main.PPID, weapon, slide, index);
         }
 
         GTA.UI.Notification.Show($"~g~Livery color {name} purchased!", true);

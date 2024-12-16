@@ -51,7 +51,7 @@ namespace LittleJacobMod.Saving.Utils
         public int GetCamoColor()
         {
             if (Camo == null) return 0;
-            return Function.Call<int>(Hash._GET_PED_WEAPON_LIVERY_COLOR, Main.PPID, WeaponHash, Camo.Hash);
+            return Function.Call<int>(Hash.GET_PED_WEAPON_COMPONENT_TINT_INDEX, Main.PPID, WeaponHash, Camo.Hash);
         }
     }
 }
