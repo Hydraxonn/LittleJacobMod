@@ -555,7 +555,8 @@ internal class DeliveryMain : Script
             var ped = Function.Call<int>(Hash.CREATE_PED_INSIDE_VEHICLE, v, 0, _pedModel, i, false, false);
             Function.Call(Hash.SET_PED_RELATIONSHIP_GROUP_HASH, ped, _hate);
             Function.Call(Hash.GIVE_WEAPON_TO_PED, ped, (uint)WeaponHash.MicroSMG, 2000, false, true);
-
+            Function.Call(Hash.SET_PED_ACCURACY, ped, 5);
+            
             if (i == -1)
             {
                 Function.Call(Hash.TASK_VEHICLE_CHASE, ped, Main.PPID);
@@ -564,7 +565,6 @@ internal class DeliveryMain : Script
             else
             {
                 Function.Call(Hash.TASK_VEHICLE_SHOOT_AT_PED, ped, Main.PPID, 40f);
-                Function.Call(Hash.SET_PED_ACCURACY, ped, 30);
             }
 
             _peds.Add(ped);

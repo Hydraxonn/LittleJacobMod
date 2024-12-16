@@ -456,6 +456,7 @@ namespace LittleJacobMod
         {
             var val = _ran.Next(0, _weapons.Count);
             Function.Call(Hash.GIVE_WEAPON_TO_PED, ped, (uint)_weapons[val], 2000, false, true);
+            Function.Call(Hash.SET_PED_ACCURACY, ped, 13);
         }
 
         private void RandomScenario(int ped)
@@ -838,6 +839,7 @@ namespace LittleJacobMod
                 var ped = Function.Call<int>(Hash.CREATE_PED_INSIDE_VEHICLE, v, 0, _pedModel, i, false, false);
                 Function.Call(Hash.SET_PED_RELATIONSHIP_GROUP_HASH, ped, _dislike);
                 Function.Call(Hash.GIVE_WEAPON_TO_PED, ped, (uint)WeaponHash.MicroSMG, 2000, false, true);
+                Function.Call(Hash.SET_PED_ACCURACY, ped, 5);
 
                 if (i == -1)
                 {
@@ -847,7 +849,6 @@ namespace LittleJacobMod
                 else
                 {
                     Function.Call(Hash.TASK_VEHICLE_SHOOT_AT_PED, ped, Main.PPID, 40f);
-                    Function.Call(Hash.SET_PED_ACCURACY, ped, 33);
                 }
 
                 _peds.Add(ped);
