@@ -733,6 +733,7 @@ public class Menu
             if (attachmentFetched is true && currentAttachment != null && currentAttachment.Hash != (uint)WeaponComponentHash.Invalid)
             {
                 Function.Call(Hash.REMOVE_WEAPON_COMPONENT_FROM_PED, Main.PPID, weapon, currentAttachment.Hash);
+                GTA.UI.Notification.Show($"~g~{currentAttachment.Name} removed!", true);
             }
         }
         else
@@ -744,9 +745,10 @@ public class Menu
             { 
                 Function.Call(Hash.GIVE_WEAPON_COMPONENT_TO_PED, Main.PPID, weapon, slide);
             }
+            
+            GTA.UI.Notification.Show($"~g~{name} purchased!", true);
         }
-                
-        GTA.UI.Notification.Show($"~g~{name} purchased!", true);
+        
         Function.Call(Hash.PLAY_SOUND_FRONTEND, -1, "WEAPON_PURCHASE", "HUD_AMMO_SHOP_SOUNDSET", true);
             
         if (camo) LoadoutSaving.SetCamo(weapon, new Component
