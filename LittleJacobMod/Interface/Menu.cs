@@ -805,12 +805,12 @@ public class Menu
         }
             
         Game.Player.Money -= price;
-        Function.Call(Hash.SET_WEAPON_OBJECT_COMPONENT_TINT_INDEX, Main.PPID, weapon, camo, index);
+        Function.Call(Hash.SET_PED_WEAPON_COMPONENT_TINT_INDEX, Main.PPID, weapon, camo, index);
         var slide = TintsAndCamos.ReturnSlide(camo);
             
         if (slide != (uint)WeaponComponentHash.Invalid)
         {
-            Function.Call(Hash.SET_WEAPON_OBJECT_COMPONENT_TINT_INDEX, Main.PPID, weapon, slide, index);
+            Function.Call(Hash.SET_PED_WEAPON_COMPONENT_TINT_INDEX, Main.PPID, weapon, slide, index);
         }
 
         GTA.UI.Notification.Show($"~g~Livery color {name} purchased!", true);
