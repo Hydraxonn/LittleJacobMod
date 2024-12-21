@@ -727,13 +727,27 @@ public class Menu
         if (component == (uint)WeaponComponentHash.Invalid)
         {
             var storedWeapon = LoadoutSaving.GetStoreReference(weapon);
-            GroupedComponent? currentAttachment = null;
-            var attachmentFetched = storedWeapon?.Attachments?.TryGetValue(group, out currentAttachment);
+            string? currentAttachmentName;
+            uint? currentAttachment;
 
-            if (attachmentFetched is true && currentAttachment != null && currentAttachment.Hash != (uint)WeaponComponentHash.Invalid)
+            if (camo)
             {
-                Function.Call(Hash.REMOVE_WEAPON_COMPONENT_FROM_PED, Main.PPID, weapon, currentAttachment.Hash);
-                GTA.UI.Notification.Show($"~g~{currentAttachment.Name} removed!", true);
+                currentAttachment = storedWeapon?.Camo?.Hash;
+                currentAttachmentName = storedWeapon?.Camo?.Name;
+            }
+            else
+            {
+                GroupedComponent? currentAttachmentRef = null;
+                storedWeapon?.Attachments?.TryGetValue(group, out currentAttachmentRef);
+                
+                currentAttachmentName = currentAttachmentRef?.Name;
+                currentAttachment = currentAttachmentRef?.Hash;
+            }
+
+            if (currentAttachment is not null and not (uint)WeaponComponentHash.Invalid)
+            {
+                Function.Call(Hash.REMOVE_WEAPON_COMPONENT_FROM_PED, Main.PPID, weapon, currentAttachment);
+                GTA.UI.Notification.Show($"~g~{currentAttachmentName} removed!", true);
             }
         }
         else
