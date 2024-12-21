@@ -723,12 +723,27 @@ public class Menu
         }
 
         Game.Player.Money -= price;
-        Function.Call(Hash.GIVE_WEAPON_COMPONENT_TO_PED, Main.PPID, weapon, component);
-        var slide = TintsAndCamos.ReturnSlide(component);
 
-        if (slide != (uint)WeaponComponentHash.Invalid) 
-        { 
-            Function.Call(Hash.GIVE_WEAPON_COMPONENT_TO_PED, Main.PPID, weapon, slide);
+        if (component == (uint)WeaponComponentHash.Invalid)
+        {
+            var storedWeapon = LoadoutSaving.GetStoreReference(weapon);
+            GroupedComponent? currentAttachment = null;
+            var attachmentFetched = storedWeapon?.Attachments?.TryGetValue(group, out currentAttachment);
+
+            if (attachmentFetched is true && currentAttachment != null && currentAttachment.Hash != (uint)WeaponComponentHash.Invalid)
+            {
+                Function.Call(Hash.REMOVE_WEAPON_COMPONENT_FROM_PED, Main.PPID, weapon, currentAttachment.Hash);
+            }
+        }
+        else
+        {
+            Function.Call(Hash.GIVE_WEAPON_COMPONENT_TO_PED, Main.PPID, weapon, component);
+            var slide = TintsAndCamos.ReturnSlide(component);
+
+            if (slide != (uint)WeaponComponentHash.Invalid) 
+            { 
+                Function.Call(Hash.GIVE_WEAPON_COMPONENT_TO_PED, Main.PPID, weapon, slide);
+            }
         }
                 
         GTA.UI.Notification.Show($"~g~{name} purchased!", true);
