@@ -10,6 +10,8 @@ namespace LittleJacobMod.Loading
     {
         private static List<JacobSpawnpoint> jacobSpawnpoints = new()
         {
+            //Jacob position, Jacob Heading, Car Position, Car Heading
+            //LS SPAWN POINTS
             new JacobSpawnpoint(new Vector3(1625.764f, 1002.065f, 104.7569f), -163.9208f, new Vector3(1627.689f, 1003.179f, 104.6205f), -14.01786f),
             new JacobSpawnpoint(new Vector3(700.1344f, 222.0037f, 92.46917f), 91.96848f, new Vector3(699.8804f, 219.7696f, 91.87753f), -118.9912f),
             new JacobSpawnpoint(new Vector3(-25.51013f, -229.6167f, 46.17864f), -160.0232f, new Vector3(-23.39594f, -228.6828f, 45.63602f), -12.67927f),
@@ -33,7 +35,17 @@ namespace LittleJacobMod.Loading
             new JacobSpawnpoint(new Vector3(2593.172f, 494.1709f, 108.4827f), 88.21005f, new Vector3(2592.86f, 491.6433f, 107.965f), -133.6859f),
             new JacobSpawnpoint(new Vector3(2330.546f, 2439.053f, 64.20835f), 44.999f, new Vector3(2327.062f, 2439.063f, 63.93856f), 142.1617f),
             new JacobSpawnpoint(new Vector3(2678.141f, 3527.897f, 52.42685f), 41.08424f, new Vector3(2676.414f, 3527.486f, 51.89222f), -166.8861f),
-            new JacobSpawnpoint(new Vector3(1724.354f, 4804.543f, 41.67359f), 117.8686f, new Vector3(1725.49f, 4802.246f, 41.17456f), -108.6089f)
+            new JacobSpawnpoint(new Vector3(1724.354f, 4804.543f, 41.67359f), 117.8686f, new Vector3(1725.49f, 4802.246f, 41.17456f), -108.6089f),
+            //LC SPAWN POINTS
+            new JacobSpawnpoint(new Vector3(4154.7788f, -2057.452f, 16.8570f), 111.2747f, new Vector3(4155.9897f, -2059.190f, 16.3051f), 265.2321f),
+            new JacobSpawnpoint(new Vector3(3713.9802f, -2560.085f, 19.5930f), 300.2187f, new Vector3(3711.6929f, -2558.266f, 19.1603f), 91.2698f),
+            new JacobSpawnpoint(new Vector3(4167.3760f, -3831.410f, 2.8473f), 96.9083f, new Vector3(4168.7100f, -3833.281f, 2.4203f), 268.7453f),
+            new JacobSpawnpoint(new Vector3(5357.2983f, -3524.011f, 12.8572f), 300.1044f, new Vector3(5355.3755f, -3523.179f, 12.4363f), 127.8072f),
+            new JacobSpawnpoint(new Vector3(4696.6807f, -2364.633f, 9.9630f), 253.1476f, new Vector3(4696.1328f, -2362.073f, 9.5023f), 54.5681f),
+            new JacobSpawnpoint(new Vector3(4716.9434f, -1477.616f, 8.7049f), 71.7237f, new Vector3(4712.8525f, -1478.022f, 8.2556f), 128.5611f),
+            new JacobSpawnpoint(new Vector3(6047.8315f, -1577.766f, 17.0541f), 126.0777f, new Vector3(6045.4585f, -1582.153f, 16.6283f), 188.7610f),
+            new JacobSpawnpoint(new Vector3(7205.2168f, -2657.853f, 18.0243f), 134.1954f, new Vector3(7207.0332f, -2657.167f, 17.5973f), 347.4177f),
+            new JacobSpawnpoint(new Vector3(5993.4248f, -3417.902f, 6.1164f), 209.2399f, new Vector3(5996.1147f, -3417.587f, 5.6903f), 336.2632f)
         };
 
         private static JacobSpawnpoint CurrentSpawnpoint { get; set; }
